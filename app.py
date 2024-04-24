@@ -1,5 +1,5 @@
 import customtkinter as ctk
-from src import fontes,images
+from src import fontes,images,especialidades
 
 
 class App(ctk.CTk):
@@ -19,9 +19,11 @@ class App(ctk.CTk):
         self.bt_titulo_dbv = ctk.CTkButton(master=self.fr_dbvs,text='DBV',image=images.user(),fg_color='#008000',
                                            text_color_disabled='#FFFFFF',font=fontes.f_campos(),state='disabled')
         self.bt_add_dbv = ctk.CTkButton(master=self.fr_dbvs,text='Adicionar Desbravador(a)',font=fontes.f_campos())
+        self.bt_add_consultar = ctk.CTkButton(master=self.fr_dbvs,text='Consultar Desbravador(a)',font=fontes.f_campos(),command=lambda:self.a())
         
         self.bt_titulo_dbv.grid(row=0,column=0,pady=(5,0))
-        self.bt_add_dbv.grid(row=1,column=0,padx=15,pady=15)
+        self.bt_add_dbv.grid(row=1,column=0,padx=15,pady=(15,5))
+        self.bt_add_consultar.grid(row=2,column=0,padx=15)
 
         # FRAME ADM
         self.bt_titulo_adm = ctk.CTkButton(master=self.fr_adm,text='Administrativo',image=images.user(),fg_color='#008000',
@@ -42,9 +44,9 @@ class App(ctk.CTk):
         
         # GRIDs
         self.lb_titulo.grid(row=0,columnspan=3,padx=15)
-        self.fr_dbvs.grid(row=1,column=0,pady=15)
-        self.fr_adm.grid(row=1,column=1,pady=15)
-        self.fr_relatorio.grid(row=1,column=2,pady=15)
+        self.fr_dbvs.grid(row=1,column=0,padx=15,pady=15)
+        self.fr_adm.grid(row=1,column=1,padx=15,pady=15)
+        self.fr_relatorio.grid(row=1,column=2,padx=15,pady=15)
 
         self.fr_dbvs.columnconfigure(0,weight=1)
         self.fr_dbvs.rowconfigure((0,1,2,3),weight=1)
@@ -52,6 +54,9 @@ class App(ctk.CTk):
         self.fr_adm.rowconfigure((0,1,2,3),weight=1)
         self.fr_relatorio.columnconfigure(0,weight=1)
         self.fr_relatorio.rowconfigure((0,1,2,3),weight=1)
+    def a(self):
+        x = especialidades.especialidades()
+        print(x['EN-070'])
 
 if __name__ == '__main__':
     App().mainloop()
