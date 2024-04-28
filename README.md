@@ -1,6 +1,6 @@
 # DBV_SYS
 
-:down_right_arrow:
+:arrow_lower_right:
 
 > CTkTable created by [Akascape](https://github.com/Akascape/CTkTable)
  
