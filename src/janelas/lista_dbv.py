@@ -21,7 +21,8 @@ class ListaDBV(ctk.CTkToplevel):
 
         value = [i for i in cursor_listar_dbv]
 
-        self.tb_dbv = CTkTable(master=self.fr_formulario, row=int([i for i in cursor_num_rows][0][0]), column=5, values=value,header_color="green",font=fontes.f_campos())
+        self.tb_dbv = CTkTable(master=self.fr_formulario, row=int([i for i in cursor_num_rows][0][0]), column=5, values=value,header_color="green",font=fontes.f_campos(),
+                               hover=True,hover_color='#996600')
 
         self.img_cadastro_dbv.grid(row=0,column=0,padx=15)
         self.lb_titulo.grid(row=0,column=1,columnspan=2,padx=15,sticky='w')

@@ -66,9 +66,18 @@ class CadastroDBV(ctk.CTkToplevel):
             case 'Lynce': uni = 2
             case 'Pégasus': uni = 3
             case 'Diretoria': uni = 4
-        self.cursor_registrar = sqlite3.connect('db/DBS_SYS.db')
-        self.query_insert = (f"INSERT INTO DBV(NOME, DT_NASC, SEGURO_PG, ID_CLASSE, ID_LIST_ESP, ID_SEGURO, ID_UNIDADE) VALUES (?,?,?,?,?,?,?);")
-        self.valores_insert = (nom,dt,seg,cl,None,None,uni)
-        self.cursor_registrar.execute(self.query_insert,self.valores_insert)
-        self.cursor_registrar.commit()
-        self.cursor_registrar.close()  
+        try:
+            self.cursor_registrar = sqlite3.connect('db/DBS_SYS.db')
+            self.query_insert = (f"INSERT INTO DBV(NOME, DT_NASC, SEGURO_PG, ID_CLASSE, ID_LIST_ESP, ID_SEGURO, ID_UNIDADE) VALUES (?,?,?,?,?,?,?);")
+            self.valores_insert = (nom,dt,seg,cl,None,None,uni)
+            self.cursor_registrar.execute(self.query_insert,self.valores_insert)
+            self.cursor_registrar.commit()
+            self.cursor_registrar.close()  
+        except Exception as e:
+            print(e)
+        finally:
+            self.in_nome.delete(0)
+            self.in_dt_nasc.delete(0)
+            self.chb_seguro.deselect()
+            self.opm_classe.set('')
+            self.opm_unidade.set('')
