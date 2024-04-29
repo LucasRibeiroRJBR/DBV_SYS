@@ -9,15 +9,15 @@ class App(ctk.CTk):
     def __init__(self):
         super().__init__()
 
-        self.geometry('750x300')
+        self.geometry('850x300')
         self.columnconfigure((0,1,2),weight=1)
         self.rowconfigure(1,weight=1)
         
         self.lb_titulo = ctk.CTkLabel(master=self,text='Sistema de Gerenciamento do Clube',font=fontes.f_titulos())
         
-        self.fr_dbvs = ctk.CTkFrame(master=self,corner_radius=12,width=200,height=400,fg_color='#282C34')
-        self.fr_adm = ctk.CTkFrame(master=self,corner_radius=12,width=200,height=400,fg_color='#282C34')
-        self.fr_relatorio = ctk.CTkFrame(master=self,corner_radius=12,width=200,height=400,fg_color='#282C34')        
+        self.fr_dbvs = ctk.CTkFrame(master=self,corner_radius=12,height=400,fg_color='#282C34')
+        self.fr_adm = ctk.CTkFrame(master=self,corner_radius=12,height=400,fg_color='#282C34')
+        self.fr_relatorio = ctk.CTkFrame(master=self,corner_radius=12,height=400,fg_color='#282C34')        
 
         # FRAME DBVs
         self.bt_titulo_dbv = ctk.CTkButton(master=self.fr_dbvs,text='DBV',image=images.user(),fg_color='#008000',
@@ -32,10 +32,12 @@ class App(ctk.CTk):
         # FRAME ADM
         self.bt_titulo_adm = ctk.CTkButton(master=self.fr_adm,text='Administrativo',image=images.user(),fg_color='#008000',
                                            text_color_disabled='#FFFFFF',font=fontes.f_campos(),state='disabled')
-        self.bt_add_adm = ctk.CTkButton(master=self.fr_adm,text='Controle de Mensalidades',font=fontes.f_campos())
+        self.bt_controle_men = ctk.CTkButton(master=self.fr_adm,text='Controle de Mensalidades',font=fontes.f_campos())
+        self.bt_add_men = ctk.CTkButton(master=self.fr_adm,text='Registrar Pagamento Mensalidade',font=fontes.f_campos())
 
         self.bt_titulo_adm.grid(row=0,column=0,pady=(5,0))
-        self.bt_add_adm.grid(row=1,column=0,padx=15,pady=15)
+        self.bt_controle_men.grid(row=1,column=0,padx=15,pady=(5,0))
+        self.bt_add_men.grid(row=2,column=0,padx=15,pady=(5,0))
 
         # FRAME RELATORIO
         self.bt_titulo_rel = ctk.CTkButton(master=self.fr_relatorio,text='Relatórios',image=images.user(),fg_color='#008000',
