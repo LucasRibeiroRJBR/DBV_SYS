@@ -11,8 +11,8 @@ class ControleMensalidade(ctk.CTkToplevel):
         self.columnconfigure(0,weight=1)
         self.columnconfigure(1,weight=2)
 
-        cursor_listar_dbv = sqlite3.connect('db/DBS_SYS.db').execute('SELECT * FROM DADOS_DBV')
-        cursor_num_rows = sqlite3.connect('db/DBS_SYS.db').execute('SELECT COUNT(0) FROM DBV')
+        cursor_listar_dbv = sqlite3.connect('db/DBS_SYS.db').execute("SELECT ' NOME','ANO','VALOR PAGO','DATA PAGAMENTO' UNION SELECT * FROM V_SEGURO")
+        cursor_num_rows = sqlite3.connect('db/DBS_SYS.db').execute('SELECT COUNT(0)+1 FROM V_SEGURO')
 
         self.img_cadastro_dbv = ctk.CTkButton(master=self,text='',image=images.user(),state='disabled',fg_color='#008000')
         self.lb_titulo = ctk.CTkLabel(master=self,text='Controle de Mensalidades',font=fontes.f_titulos())
@@ -21,7 +21,7 @@ class ControleMensalidade(ctk.CTkToplevel):
 
         value = [i for i in cursor_listar_dbv]
 
-        self.tb_dbv = CTkTable(master=self.fr_formulario, row=int([i for i in cursor_num_rows][0][0]), column=5, values=value,header_color="green",font=fontes.f_campos(),
+        self.tb_dbv = CTkTable(master=self.fr_formulario, row=int([i for i in cursor_num_rows][0][0]), column=4, values=value,header_color="green",font=fontes.f_campos(),
                                hover=True,hover_color='#996600')
 
         self.img_cadastro_dbv.grid(row=0,column=0,padx=15)
