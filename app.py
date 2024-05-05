@@ -1,6 +1,6 @@
 import customtkinter as ctk
 from src import fontes,images
-from src.janelas import cadastros_dbv,lista_dbv
+from src.janelas import cadastros_dbv,lista_dbv,ctrl_mens
 import sqlite3
 
 
@@ -8,7 +8,7 @@ import sqlite3
 class App(ctk.CTk):
     def __init__(self):
         super().__init__()
-
+        self.title('Sistema de Gerenciamento do Clube')
         self.geometry('850x300')
         self.columnconfigure((0,1,2),weight=1)
         self.rowconfigure(1,weight=1)
@@ -32,7 +32,7 @@ class App(ctk.CTk):
         # FRAME ADM
         self.bt_titulo_adm = ctk.CTkButton(master=self.fr_adm,text='Administrativo',image=images.user(),fg_color='#008000',
                                            text_color_disabled='#FFFFFF',font=fontes.f_campos(),state='disabled')
-        self.bt_controle_men = ctk.CTkButton(master=self.fr_adm,text='Controle de Mensalidades',font=fontes.f_campos())
+        self.bt_controle_men = ctk.CTkButton(master=self.fr_adm,text='Controle de Mensalidades',font=fontes.f_campos(),command=self.abrirControlMens)
         self.bt_add_men = ctk.CTkButton(master=self.fr_adm,text='Registrar Pagamento Mensalidade',font=fontes.f_campos())
 
         self.bt_titulo_adm.grid(row=0,column=0,pady=(5,0))
@@ -64,6 +64,7 @@ class App(ctk.CTk):
         # TopLevels
         self.w_cadastroDBV = None
         self.w_listaDBV = None
+        self.w_controleMensalidades = None
 
     def abrirCadastroDBV(self):
         if self.w_cadastroDBV is None or not self.w_cadastroDBV.winfo_exists():
@@ -76,6 +77,10 @@ class App(ctk.CTk):
             self.w_listaDBV = lista_dbv.ListaDBV(self)
         else:
             self.w_listaDBV.focus()
+
+    def abrirControlMens(self):
+        if self.w_controleMensalidades is None or not self.w_controleMensalidades.winfo_exists():
+            self.w_controleMensalidades = ctrl_mens.ControleMensalidade(self)
 
 if __name__ == '__main__':
     App().mainloop()
