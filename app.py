@@ -22,8 +22,8 @@ class App(ctk.CTk):
         # FRAME DBVs
         self.bt_titulo_dbv = ctk.CTkButton(master=self.fr_dbvs,text='DBV',image=images.user(),fg_color='#008000',
                                            text_color_disabled='#FFFFFF',font=fontes.f_campos(),state='disabled')
-        self.bt_add_dbv = ctk.CTkButton(master=self.fr_dbvs,text='Adicionar Desbravador(a)',font=fontes.f_campos(),command=self.abrirCadastroDBV)
-        self.bt_listar_dbv = ctk.CTkButton(master=self.fr_dbvs,text='Consultar Desbravador(a)',font=fontes.f_campos(),command=self.abrirListaDBV)
+        self.bt_add_dbv = ctk.CTkButton(master=self.fr_dbvs,text='Adicionar Desbravador(a)',font=fontes.f_campos(),height=45,command=self.abrirCadastroDBV)
+        self.bt_listar_dbv = ctk.CTkButton(master=self.fr_dbvs,text='Consultar Desbravador(a)',font=fontes.f_campos(),height=45,command=self.abrirListaDBV)
         
         self.bt_titulo_dbv.grid(row=0,column=0,pady=(5,0))
         self.bt_add_dbv.grid(row=1,column=0,padx=15,pady=(15,0))
@@ -32,20 +32,20 @@ class App(ctk.CTk):
         # FRAME ADM
         self.bt_titulo_adm = ctk.CTkButton(master=self.fr_adm,text='Administrativo',image=images.user(),fg_color='#008000',
                                            text_color_disabled='#FFFFFF',font=fontes.f_campos(),state='disabled')
-        self.bt_controle_men = ctk.CTkButton(master=self.fr_adm,text='Controle de Mensalidades',font=fontes.f_campos(),command=self.abrirControlMens)
-        self.bt_add_men = ctk.CTkButton(master=self.fr_adm,text='Registrar Pagamento Mensalidade',font=fontes.f_campos())
+        self.bt_controle_men = ctk.CTkButton(master=self.fr_adm,text='Controle de Mensalidades',font=fontes.f_campos(),height=45,command=self.abrirControlMens)
+        self.bt_add_men = ctk.CTkButton(master=self.fr_adm,text='Registrar Pagamento Mensalidade',height=45,font=fontes.f_campos())
 
         self.bt_titulo_adm.grid(row=0,column=0,pady=(5,0))
         self.bt_controle_men.grid(row=1,column=0,padx=15,pady=(5,0))
-        self.bt_add_men.grid(row=2,column=0,padx=15,pady=(5,0))
+        self.bt_add_men.grid(row=2,column=0,padx=15,pady=5)
 
         # FRAME RELATORIO
         self.bt_titulo_rel = ctk.CTkButton(master=self.fr_relatorio,text='Relatórios',image=images.user(),fg_color='#008000',
                                            text_color_disabled='#FFFFFF',font=fontes.f_campos(),state='disabled')
-        self.bt_add_rel = ctk.CTkButton(master=self.fr_relatorio,text='Mensalidades',font=fontes.f_campos())
+        self.bt_add_rel = ctk.CTkButton(master=self.fr_relatorio,text='Mensalidades',height=45,font=fontes.f_campos())
 
         self.bt_titulo_rel.grid(row=0,column=0,pady=(5,0))
-        self.bt_add_rel.grid(row=1,column=0,padx=15,pady=15)
+        self.bt_add_rel.grid(row=1,column=0,padx=15,pady=5)
 
         
         # GRIDs
