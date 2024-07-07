@@ -1,6 +1,6 @@
 import customtkinter as ctk
 from src import fontes,images
-from src.janelas import cadastros_dbv,lista_dbv,ctrl_mens
+from src.janelas import cadastros_dbv,lista_dbv,ctrl_mens,registro_mensalidade
 import sqlite3
 
 
@@ -11,13 +11,13 @@ class App(ctk.CTk):
         self.title('Sistema de Gerenciamento do Clube')
         self.geometry('850x300')
         self.columnconfigure((0,1,2),weight=1)
-        self.rowconfigure(1,weight=1)
+        self.rowconfigure((0,1),weight=2)
         
         self.lb_titulo = ctk.CTkLabel(master=self,text='Sistema de Gerenciamento do Clube',font=fontes.f_titulos())
         
-        self.fr_dbvs = ctk.CTkFrame(master=self,corner_radius=12,height=400,fg_color='#282C34')
-        self.fr_adm = ctk.CTkFrame(master=self,corner_radius=12,height=400,fg_color='#282C34')
-        self.fr_relatorio = ctk.CTkFrame(master=self,corner_radius=12,height=400,fg_color='#282C34')        
+        self.fr_dbvs = ctk.CTkFrame(master=self,corner_radius=12,height=400)
+        self.fr_adm = ctk.CTkFrame(master=self,corner_radius=12,height=400)
+        self.fr_relatorio = ctk.CTkFrame(master=self,corner_radius=12,height=400)        
 
         # FRAME DBVs
         self.bt_titulo_dbv = ctk.CTkButton(master=self.fr_dbvs,text='DBV',image=images.user(),fg_color='#008000',
@@ -33,7 +33,7 @@ class App(ctk.CTk):
         self.bt_titulo_adm = ctk.CTkButton(master=self.fr_adm,text='Administrativo',image=images.user(),fg_color='#008000',
                                            text_color_disabled='#FFFFFF',font=fontes.f_campos(),state='disabled')
         self.bt_controle_men = ctk.CTkButton(master=self.fr_adm,text='Controle de Mensalidades',font=fontes.f_campos(),height=45,command=self.abrirControlMens)
-        self.bt_add_men = ctk.CTkButton(master=self.fr_adm,text='Registrar Pagamento Mensalidade',height=45,font=fontes.f_campos())
+        self.bt_add_men = ctk.CTkButton(master=self.fr_adm,text='Registrar Pagamento Mensalidade',height=45,font=fontes.f_campos(),command=self.registroMensalidade)
 
         self.bt_titulo_adm.grid(row=0,column=0,pady=(5,0))
         self.bt_controle_men.grid(row=1,column=0,padx=15,pady=(5,0))
@@ -65,6 +65,7 @@ class App(ctk.CTk):
         self.w_cadastroDBV = None
         self.w_listaDBV = None
         self.w_controleMensalidades = None
+        self.w_registro_mensalidade = None
 
     def abrirCadastroDBV(self):
         if self.w_cadastroDBV is None or not self.w_cadastroDBV.winfo_exists():
@@ -81,6 +82,10 @@ class App(ctk.CTk):
     def abrirControlMens(self):
         if self.w_controleMensalidades is None or not self.w_controleMensalidades.winfo_exists():
             self.w_controleMensalidades = ctrl_mens.ControleMensalidade(self)
+
+    def registroMensalidade(self):
+        if self.w_registro_mensalidade is None or not self.w_registro_mensalidade.winfo_exists():
+            self.w_registro_mensalidade = registro_mensalidade.RegistroMensalidade(self)
 
 if __name__ == '__main__':
     App().mainloop()
